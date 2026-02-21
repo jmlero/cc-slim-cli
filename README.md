@@ -19,7 +19,7 @@ claude --plugin-dir /path/to/cc-slim-cli
 
 Intercepts Bash tool calls and rewrites commands that produce noisy output into compact equivalents. Commands that already have compact flags or piped output are left unchanged.
 
-### Rewrite Rules (24 total)
+### Rewrite Rules (26 total)
 
 #### Git (8 rules)
 | Input | Output |
@@ -64,10 +64,12 @@ Intercepts Bash tool calls and rewrites commands that produce noisy output into 
 | `curl ...` | `curl -sS ...` |
 | `wget ...` | `wget --quiet ...` |
 
-#### Cargo (1 rule)
+#### Go (3 rules)
 | Input | Output |
 |-------|--------|
-| `cargo build ...` | `... --quiet` |
+| `go test ...` | `... 2>&1 \| tail -20` |
+| `go build ...` | `... 2>&1 \| tail -10` |
+| `go get ...` | `... 2>&1 \| tail -5` |
 
 ## Safety
 

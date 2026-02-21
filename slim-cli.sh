@@ -124,11 +124,19 @@ elif [[ "$CMD" =~ ^curl\  ]] && [[ ! "$CMD" =~ -s ]] && [[ ! "$CMD" =~ --silent 
 elif [[ "$CMD" =~ ^wget\  ]] && [[ ! "$CMD" =~ --quiet ]] && [[ ! "$CMD" =~ -q ]]; then
   REWRITTEN="${CMD/wget /wget --quiet }"
 
-# ─── Cargo (1 rule) ─────────────────────────────────────────────────
+# ─── Go (3 rules) ───────────────────────────────────────────────────
 
-# cargo build (without --quiet/-q, without pipe) → append --quiet
-elif [[ "$CMD" =~ ^cargo\ build ]] && [[ ! "$CMD" =~ --quiet ]] && [[ ! "$CMD" =~ -q ]] && [[ ! "$CMD" =~ \| ]]; then
-  REWRITTEN="$CMD --quiet"
+# go test (without pipe) → tail -20 for compact summary
+elif [[ "$CMD" =~ ^go\ test ]] && [[ ! "$CMD" =~ \| ]]; then
+  REWRITTEN="$CMD 2>&1 | tail -20"
+
+# go build (without pipe) → tail -10
+elif [[ "$CMD" =~ ^go\ build ]] && [[ ! "$CMD" =~ \| ]]; then
+  REWRITTEN="$CMD 2>&1 | tail -10"
+
+# go get (without pipe) → tail -5
+elif [[ "$CMD" =~ ^go\ get ]] && [[ ! "$CMD" =~ \| ]]; then
+  REWRITTEN="$CMD 2>&1 | tail -5"
 
 fi
 
