@@ -1,6 +1,6 @@
 {
   "name": "slim-cli",
   "version": "1.0.0",
-  "description": "Puts your CLI output on a diet — rewrites verbose commands to compact versions. Covers git, Docker, npm/yarn/pnpm, pip, curl/wget, and cargo.",
+  "description": "Puts your CLI output on a diet — rewrites verbose commands to compact versions to save tokens. Covers git, Docker, npm/yarn/pnpm, pip, curl/wget, and Go.",
   "author": "jmlero"
 }

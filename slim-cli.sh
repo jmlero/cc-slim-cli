@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # slim-cli: puts your CLI output on a diet.
 # Rewrites verbose commands to compact versions for git, Docker,
-# npm/yarn/pnpm, pip, curl/wget, and cargo.
+# npm/yarn/pnpm, pip, curl/wget, and Go.
 #
 # Reads JSON from stdin, outputs hookSpecificOutput with updatedInput.
 # Exit 0 with no output = allow the tool call unchanged.
