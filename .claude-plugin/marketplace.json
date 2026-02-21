@@ -1,0 +1,11 @@
+{
+  "name": "jmlero",
+  "owner": { "name": "jmlero" },
+  "plugins": [
+    {
+      "name": "slim-cli",
+      "source": ".",
+      "description": "Puts your CLI output on a diet — rewrites verbose commands to compact versions to save tokens."
+    }
+  ]
+}
